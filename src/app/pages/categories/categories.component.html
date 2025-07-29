@@ -1,0 +1,46 @@
+<section class="px-6 py-10 bg-gray-50">
+
+  <h2 class="text-3xl font-extrabold text-gray-900 mb-8 text-center">
+    {{ 'home.shopCategoris' | translate }}
+  </h2>
+
+  @if (myCate.length > 0) {
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+    @for (cate of myCate; track cate._id) {
+    <div (click)="getAllSubCategriesCategory(cate._id)"
+      class="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group border border-gray-100 flex flex-col items-center justify-center p-4">
+      <!-- صورة الكاتيجوري -->
+      <div class="w-36 h-36 flex items-center justify-center overflow-hidden rounded-lg bg-gray-100">
+        <img [src]="cate.image" [alt]="cate.name"
+          class="w-32 h-32 object-contain transition-transform duration-500 ease-in-out group-hover:scale-110" />
+      </div>
+
+      <h3
+        class="mt-4 text-lg font-semibold text-gray-800 group-hover:text-green-600 transition-colors duration-300 text-center">
+        {{ cate.name }}
+      </h3>
+    </div>
+    }
+  </div>
+  }
+
+  @if (subCategories.length > 0) {
+  <div class="mt-10 max-w-4xl mx-auto">
+    <div class="flex flex-wrap gap-3 justify-center">
+      @for (sub of subCategories; track sub._id) {
+      <div
+        class="px-4 py-2 border rounded-lg shadow-sm bg-white hover:bg-green-100 cursor-pointer transition-all duration-300">
+        {{ sub.name }}
+      </div>
+      }
+    </div>
+  </div>
+  }
+
+  @if (isCategoryClicked && subCategories.length === 0) {
+  <div class="mt-10 text-center text-gray-500 text-lg font-medium">
+    No subcategories available
+  </div>
+  }
+
+</section>

@@ -1,0 +1,120 @@
+
+
+<form class="max-w-md mx-auto pt-5">
+  <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">
+    {{ 'home.search' | translate }}
+  </label>
+  <div class="relative">
+    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+      <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+        viewBox="0 0 20 20">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+      </svg>
+    </div>
+    <input name="searchItem" type="search" [(ngModel)]="searchItem" id="default-search"
+      class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-green-500 focus:border-green-500"
+      placeholder="{{ 'home.SearchProduct,Logos' | translate }}" />
+    <button type="button"
+      class="text-white absolute end-2.5 bottom-2.5 bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2">
+      {{ 'home.search' | translate }}
+    </button>
+  </div>
+</form>
+
+<section class="py-6 px-5">
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 p-4">
+    @for (prod of (myProduct | search: searchItem | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage,
+    id: 'product-pagination' }); track prod._id) {
+    <div
+      class="bg-white cursor-pointer rounded-xl shadow-md hover:shadow-xl transition transform hover:-translate-y-1 hover:scale-105 overflow-hidden flex flex-col justify-between relative">
+      <div [routerLink]="['/details', prod._id]">
+        <div class="relative group">
+          <img [src]="prod.imageCover"
+            class="w-full h-[250px] object-contain transition-transform duration-500 group-hover:scale-110" alt="">
+          @if (prod.priceAfterDiscount) {
+          <span class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 text-xs font-bold rounded">
+            -{{ ((prod.price - prod.priceAfterDiscount) / prod.price * 100) | number:'1.0-0' }}%
+          </span>
+          }
+          @if (prod.sold > 2000) {
+          <span class="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 text-xs font-semibold rounded">
+            {{ 'home.bestseller' | translate }}
+          </span>
+          }
+        </div>
+
+        <div class="p-4 flex flex-col gap-2">
+          <h5 class="text-lg font-semibold text-gray-900 truncate">{{ prod.title }}</h5>
+          <p class="text-green-600 text-xs font-medium">{{ prod.category.name }}</p>
+
+          <div class="flex items-center gap-2">
+            @if (prod.brand?.image) {
+            <img [src]="prod.brand.image" class="w-6 h-6 object-contain rounded-full border" />
+            }
+            <span class="text-gray-500 text-sm">{{ prod.brand?.name }}</span>
+          </div>
+
+          <div class="flex items-center gap-2 mt-1">
+            <span class="text-2xl font-bold text-gray-900">{{ (prod.priceAfterDiscount || prod.price) | currency:'EGP'
+              }}</span>
+            @if (prod.priceAfterDiscount) {
+            <span class="line-through text-gray-400 text-sm">{{ prod.price }}</span>
+            }
+          </div>
+
+          <div class="flex items-center mt-2">
+            @for (star of [1, 2, 3, 4, 5]; track star) {
+            <svg class="w-4 h-4" [class.text-yellow-400]="star <= prod.ratingsAverage"
+              [class.text-gray-300]="star > prod.ratingsAverage" fill="currentColor" viewBox="0 0 22 20">
+              <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534
+                1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0
+                1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0
+                2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0
+                2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0
+                .387-1.575Z" />
+            </svg>
+            }
+            <span class="ml-2 text-sm text-gray-600">{{ prod.ratingsAverage }}</span>
+          </div>
+
+          @if (prod.priceAfterDiscount && prod.priceAfterDiscount > 2000) {
+          <p class="text-xs text-green-500 font-medium mt-1">✅ {{ 'home.freeShipping' | translate }}</p>
+          }
+
+          <p class="text-xs text-gray-500">{{ 'home.available' | translate }}: {{ prod.quantity }} | {{ 'home.sold' |
+            translate }}: {{ prod.sold }}</p>
+        </div>
+      </div>
+
+      <div class="p-4">
+        <button (click)="addProductToCart(prod)" [disabled]="prod.isLoading"
+          [class.bg-green-600]="!prod.isLoading && !prod.isSuccess && !prod.isError"
+          [class.hover:bg-green-800]="!prod.isLoading && !prod.isSuccess && !prod.isError"
+          [class.bg-yellow-500]="prod.isLoading" [class.bg-emerald-600]="prod.isSuccess"
+          [class.bg-red-600]="prod.isError"
+          class="w-full text-white cursor-pointer font-semibold rounded-lg text-sm px-5 py-2.5 text-center transition">
+
+          @if (prod.isLoading) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <span> {{ 'button.loading' | translate }}...</span>
+          } @else if (prod.isSuccess) {
+          <i class="fa-solid fa-circle-check"></i>
+          <span> {{ 'button.done' | translate }}</span>
+          } @else if (prod.isError) {
+          <i class="fa-solid fa-circle-xmark"></i>
+          <span> {{ 'button.failed' | translate }}</span>
+          } @else {
+          <span>{{ 'button.addToCart' | translate }}</span>
+          }
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+
+
+  <pagination-controls id="product-pagination" (pageChange)="onPageChange($event)" previousLabel="{{'cart.prev' | translate}}" nextLabel="{{'cart.next' | translate}}"
+    [maxSize]="5" class="mt-6 flex  justify-center space-x-2">
+  </pagination-controls>
+</section>

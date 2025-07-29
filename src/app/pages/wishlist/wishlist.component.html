@@ -1,0 +1,56 @@
+@if (isLoading) {
+<div class="flex justify-center items-center h-80">
+  <span class="animate-pulse text-gray-400 text-xl">
+    {{ 'wishlist.loading' | translate }}
+  </span>
+</div>
+}
+@else if (products.length > 0) {
+<section class="px-4 py-10 bg-gray-50 min-h-screen">
+  <h2 class="text-3xl font-bold text-gray-800 mb-10 text-center">
+    {{ 'wishlist.title' | translate }}
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
+    @for (prod of products; track prod._id) {
+    <div class="flex items-center bg-white shadow rounded-xl p-5 hover:shadow-lg transition-all duration-300 group">
+
+      <a [routerLink]="['/details', prod._id]" class="shrink-0">
+        <img [src]="prod.imageCover" alt="{{ prod.title }}"
+          class="w-28 h-28 object-cover rounded-lg shadow-md group-hover:scale-105 transition-transform duration-300" />
+      </a>
+
+      <div class="flex-1 ml-5">
+        <h3 class="text-xl font-semibold text-gray-800 mb-1">
+          <a [routerLink]="['/details', prod._id]" class="hover:underline">
+            {{ prod.title }}
+          </a>
+        </h3>
+        <p class="text-gray-500 text-sm line-clamp-2 mb-2">
+          {{ prod.description || ('wishlist.noDescription' | translate) }}
+        </p>
+        <span class="text-green-600 font-bold text-lg">
+          {{ 'wishlist.pricePrefix' | translate }} {{ prod.price || 'N/A' }}
+        </span>
+      </div>
+
+      <button (click)="removeFromWishlist(prod._id)" class="ml-4 text-red-600 hover:text-red-800 transition"
+        [title]="'wishlist.remove' | translate">
+        <i class="fa-solid fa-trash text-xl"></i>
+      </button>
+    </div>
+    }
+  </div>
+</section>
+}
+@else {
+<div class="flex flex-col items-center justify-center h-[60vh] text-center px-4">
+  <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" alt="Empty" class="w-32 h-32 opacity-70 mb-4" />
+  <h3 class="text-gray-500 text-lg">
+    {{ 'wishlist.emptyTitle' | translate }}
+  </h3>
+  <p class="text-sm text-gray-400 mt-1">
+    {{ 'wishlist.emptySubtitle' | translate }}
+  </p>
+</div>
+}

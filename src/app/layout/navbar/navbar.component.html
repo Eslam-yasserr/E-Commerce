@@ -1,0 +1,135 @@
+<nav class="bg-[#333549] border-gray-200">
+  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a routerLink="/home" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <img src="/images/freshcart-logo.svg" class="h-8" alt="freshcart-logo" />
+    </a>
+    <button data-collapse-toggle="navbar-default" type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-[#bbbbbb] rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+      aria-controls="navbar-default" aria-expanded="false">
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15" />
+      </svg>
+    </button>
+    <div class="hidden w-full md:flex flex-grow items-center md:w-auto" id="navbar-default">
+      <ul
+        class="font-medium flex capitalize flex-col ms-[16px] p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ">
+        @if (isLoggedIn()) {
+        <li><a class="block py-2 px-3 rounded-sm md:p-1 text-[#bbbbbb] " routerLink="home"
+            routerLinkActive="bg-[#bbbbbb] rounded-lg text-black " aria-current="page">{{'navbar.home' | translate}}</a>
+        </li>
+
+        <li><a class="block py-2 px-3 rounded-sm md:p-1 text-[#bbbbbb] " routerLink="products"
+            routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">{{'navbar.products' |
+            translate}}</a></li>
+        <li><a class="block py-2 px-3 rounded-sm md:p-1 text-[#bbbbbb] " routerLink="categories"
+            routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">{{'navbar.categories' |
+            translate}}</a></li>
+        <li><a class="block py-2 px-3 rounded-sm md:p-1 text-[#bbbbbb] " routerLink="brands"
+            routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">{{'navbar.brands' |
+            translate}}</a></li>
+            <li><a class="block py-2 px-3 rounded-sm md:p-1 text-[#bbbbbb] " routerLink="wishlist"
+                routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">{{'navbar.wishlist' |
+                translate}}</a></li>
+        <li><a class="block py-2 px-3 rounded-sm md:p-1 text-[#bbbbbb] " routerLink="allorders"
+            routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">{{'navbar.orders' |
+            translate}}</a></li>
+        }
+      </ul>
+
+      <ul
+        class="ms-auto font-medium cursor-pointer  flex flex-col items-center p-4 md:p-0 mt-4 rounded-lg md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ">
+
+        <li>
+          <a href="https://www.instagram.com" target="_blank"
+            class="lg:block hidden  py-2 px-3 rounded-sm md:p-0 text-[#bbbbbb]" aria-current="page">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com" target="_blank"
+            class="lg:block hidden py-2 px-3 rounded-sm md:p-0 text-[#bbbbbb]" aria-current="page">
+            <i class="fab fa-facebook"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.tiktok.com" target="_blank"
+            class="lg:block hidden py-2 px-3 rounded-sm md:p-0 text-[#bbbbbb]" aria-current="page">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.twitter.com" target="_blank"
+            class="lg:block hidden py-2 px-3 rounded-sm md:p-0 text-[#bbbbbb]" aria-current="page">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com" target="_blank"
+            class="lg:block hidden py-2 px-3 rounded-sm md:p-0 text-[#bbbbbb]" aria-current="page">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com" target="_blank"
+            class="lg:block hidden  py-2 px-3 rounded-sm md:p-0 text-[#bbbbbb]" aria-current="page">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </li>
+        <li>
+          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+            class="flex items-center text-[#bbbbbb]  justify-between w-full py-2 px-3  rounded-sm  md:border-0 cursor-pointer   md:p-0 md:w-auto ">{{'navbar.language'
+            | translate}}
+            🌐
+            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+              viewBox="0 0 10 6">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="m1 1 4 4 4-4" />
+            </svg></button>
+          <div id="dropdownNavbar"
+            class="z-10 hidden cursor-pointer font-normal bg-white divide-y divide-gray-100 rounded-lg shadow-sm w-44 ">
+            <ul class="py-2 cursor-pointer  text-sm text-gray-700 " aria-labelledby="dropdownLargeButton">
+              <li [class.hidden]="currentLang('en')">
+                <a (click)="changeLang('en')" class="block px-4 py-2 hover:bg-gray-300">English</a>
+              </li>
+              <li [class.hidden]="currentLang('ar')">
+                <a (click)="changeLang('ar')" class="block px-4 py-2 hover:bg-gray-300">العربية</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        @if (isLoggedIn()) {
+        <li>
+          <a class="block py-2 px-3 text-2xl rounded-sm md:p-1 text-[#bbbbbb] relative" routerLink="cart"
+            routerLinkActive=" rounded-lg text-green-700 text-3xl" aria-current="page">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span
+              class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-green-600/20 ring-inset absolute top-0   right-[-10px]">{{numOfItems}}</span>
+          </a>
+        </li>
+        <li>
+          <a class="block py-2 border border-gray-100 px-3 md:border-0 hover:bg-[#bbbbbb] hover:text-black hover:rounded-lg    rounded-sm md:p-1 text-[#bbbbbb] cursor-pointer"
+            aria-current="page" (click)="signOut()">
+            {{"navbar.signout"| translate}}
+          </a>
+        </li>
+        }
+        @else {
+        <li>
+          <a href="" class="block py-2 px-3 capitalize rounded-sm md:p-1 text-[#bbbbbb] cursor-pointer"
+            routerLink="login" routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">
+            {{'navbar.login' | translate}}
+          </a>
+        </li>
+        <li>
+          <a href="" class="block py-2 px-3 capitalize rounded-sm md:p-1 text-[#bbbbbb] cursor-pointer"
+            routerLink="register" routerLinkActive="bg-[#bbbbbb]  rounded-lg text-black" aria-current="page">
+            {{'navbar.register' | translate}}
+          </a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

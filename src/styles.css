@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+
+@import 'animate.css';
+
+*{
+  font-family: "Oswald", sans-serif;
+
+}
+.ngx-pagination {
+  display: flex;
+  justify-content: center;
+
+}
+
+.ngx-pagination li a,
+.ngx-pagination li span {
+   color: white;
+  color: #374151;
+  padding: 5px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.ngx-pagination li a:hover {
+  background-color: #16a34a;
+  color: #fff;
+}
+
+.ngx-pagination .current {
+  background-color: #16a34a !important;
+  color: #fff !important;
+  font-weight: bold;
+}

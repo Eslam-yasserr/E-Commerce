@@ -1,0 +1,68 @@
+<footer class="bg-[#333549] text-white border-gray-200 py-10">
+  <div
+    class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-5 px-4 rtl:grid-cols-4 rtl:grid-flow-col-dense">
+
+
+    <div>
+      <span class="text-3xl font-bold font-cursive">
+        <img src="images/freshcart-logo.svg" alt="">
+      </span>
+      <p class="text-gray-500 mt-4">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt cilisis.
+      </p>
+      <div class="flex items-center mt-4 space-x-2 rtl:space-x-reverse">
+        <img src="/images/payment-1.png" alt="MasterCard" class="h-8">
+        <img src="/images/payment-2.png" alt="Visa" class="h-8">
+        <img src="/images/payment-3.png" alt="Discover" class="h-8">
+        <img src="/images/payment-4.png" alt="PayPal" class="h-8">
+        <img src="/images/payment-5.png" alt="Cirrus" class="h-8">
+      </div>
+    </div>
+
+
+    <div>
+      <h2 class="font-bold mb-4">{{ 'footer.quickLinks' | translate }}</h2>
+      <ul class="space-y-2 text-gray-400 cursor-pointer">
+        <li><a class="hover:text-gray-300">{{ 'footer.about' | translate }}</a></li>
+        <li><a class="hover:text-gray-300">{{ 'footer.blogs' | translate }}</a></li>
+        <li><a class="hover:text-gray-300">{{ 'footer.contact' | translate }}</a></li>
+        <li><a class="hover:text-gray-300">{{ 'footer.faq' | translate }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-bold mb-4">{{ 'footer.account' | translate }}</h2>
+      <ul class="space-y-2 text-gray-400 cursor-pointer">
+        <li><a class="hover:text-gray-300">{{ 'footer.myAccount' | translate }}</a></li>
+        <li><a class="hover:text-gray-300">{{ 'footer.ordersTracking' | translate }}</a></li>
+        <li><a class="hover:text-gray-300">{{ 'footer.checkout' | translate }}</a></li>
+        <li><a class="hover:text-gray-300">{{ 'footer.wishlist' | translate }}</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-bold mb-4">{{ 'footer.newsletter' | translate }}</h2>
+      <form class="sm:flex mb-4 hidden rtl:flex-row-reverse">
+        <input type="email" placeholder="{{ 'footer.emailPlaceholder' | translate }}"
+          class="text-gray-400 flex-1 border border-gray-300 px-4 py-2 rounded-s-full rtl:rounded-s-none rtl:rounded-e-full">
+        <button
+          class="text-white bg-green-700 hover:bg-green-800 font-medium text-sm px-5 py-2.5 rounded-e-full rtl:rounded-e-none rtl:rounded-s-full">
+          {{ 'footer.subscribe' | translate }}
+        </button>
+      </form>
+      <div class="flex space-x-3 rtl:space-x-reverse cursor-pointer text-gray-500">
+        <a class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></a>
+        <a class="hover:text-gray-300"><i class="fab fa-twitter"></i></a>
+        <a class="hover:text-gray-300"><i class="fab fa-youtube"></i></a>
+        <a class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+        <a class="hover:text-gray-300 mr-2" ><i class="fab fa-pinterest"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center text-gray-400 text-sm mt-10">
+    {{ 'footer.copyright' | translate }} {{ 'footer.rightsReserved' | translate }} | {{ 'footer.templateBy' | translate
+    }}
+  </div>
+</footer>

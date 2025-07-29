@@ -1,0 +1,139 @@
+{
+  "navbar": {
+    "home": "Home",
+    "cart": "Cart",
+    "products": "Products",
+    "categories": "Categories",
+    "brands": "Brands",
+    "signout": "Sign Out",
+    "orders": "Orders",
+    "login": "Login",
+    "register": "Register",
+    "language": "Language",
+    "english": "English",
+    "arabic": "Arabic",
+    "wishlist": "Wishlist"
+  },
+  "wishlist": {
+    "title": "Your Wishlist",
+    "loading": "Loading your wishlist...",
+    "emptyTitle": "Your wishlist is empty.",
+    "emptySubtitle": "Start adding items you love!",
+    "noDescription": "No description available.",
+    "pricePrefix": "EGP",
+    "remove": "Remove"
+  },
+ "notFound": {
+  "title": "404",
+  "subtitle": "Oops! Page not found.",
+  "message": "The page you're looking for doesn't exist or has been moved.",
+  "back": "Back to Home"
+}
+,
+  "home": {
+    "shopCategoris": "Shop Popular Categoris",
+    "search": "Search",
+    "bestseller": "Bestseller",
+    "freeShipping": "Free Shipping",
+    "available": "Available",
+    "sold": "Sold",
+    "SearchProduct,Logos": "Search Product, Logos",
+    "subCategory": "Subcategory",
+    "category": "Category"
+  },
+  "cart": {
+    "yourShoppingCart": "Your Shopping Cart",
+    "brand": "Brand",
+    "total": "Total",
+    "remove": "Remove",
+    "orderSummary": "Order Summary",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "free": "Free",
+    "discount": "Discount",
+    "payment": "Payment",
+    "clearCart": "Clear Cart",
+    "securePayment": "Secure Payment",
+    "yourCartIsEmpty": "Your Cart is Empty",
+    "notAddYet": "Looks like you haven't added anything yet.",
+    "continueShopping": "Continue Shopping",
+    "ratings": "ratings",
+    "prev": "prev",
+    "next": "Next"
+  },
+  "orders": {
+    "myOrders": "My Orders",
+    "order": "Order",
+    "total": "Total",
+    "payment": "Payment",
+    "shipping": "Shipping",
+    "free": "Free",
+    "brand": "Brand",
+    "categories": "Categories",
+    "itemCount": "Item Count",
+    "viewProductDetails": "View Product Details"
+  },
+  "login": {
+    "login": "Login",
+    "email": "Email",
+    "password": "Password",
+    "Forgot Password": "Forgot Password",
+    "dont have account": "Don't have an account ?"
+  },
+  "register": {
+    "registerNow": "Register Now",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "rePassword": "rePassword",
+    "phone": "Phone",
+    "": ""
+  },
+  "forgot": {
+    "resetPassword": "Reset Password",
+    "email": "Email",
+    "sendCode": "Send Code",
+    "resetCode": "Reset Code",
+    "newPassword": "New Password",
+    "pleaseTryAgain": "please try again"
+  },
+  "button": {
+    "loading": "Loading",
+    "done": "Done",
+    "failed": "Failed",
+    "login": "Login",
+    "submit": "Submit",
+    "addToCart": "🛒 Add to Cart"
+  },
+  "warning": {
+    "requirementsAreMet": "Ensure that these requirements are met",
+    "nameIsRequired": "Name is Required",
+    "nameGreater": "Name must be greater than 3 characters",
+    "nameLess": "Name must be less than 20 characters",
+    "emailIsRequired": "email is Required",
+    "invalidEmail": "Invalid Email",
+    "passwordIsRequired": "password is Required",
+    "invalidpass": "Invalid password Must be start with Capital char +8 characters",
+    "rePassDoesntMatch": "Password and rePassowrd doesn't match",
+    "phoneIsRequired": "Phone is Required",
+    "entarValidNum": "Entar a valid Egyptian phone number."
+  },
+  "footer": {
+    "quickLinks": "Quick Links",
+    "account": "Account",
+    "newsletter": "Newsletter",
+    "about": "About",
+    "blogs": "Blogs",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "myAccount": "My Account",
+    "ordersTracking": "Orders Tracking",
+    "checkout": "Checkout",
+    "wishlist": "Wishlist",
+    "subscribe": "Subscribe",
+    "emailPlaceholder": "Email",
+    "rightsReserved": "All rights reserved",
+    "copyright": "Copyright © 2025",
+    "templateBy": "This template is made by Eslam Yasser"
+  }
+}

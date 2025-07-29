@@ -1,0 +1,61 @@
+<section class="w-full my-6 sm:w-3/4 md:w-2/3 lg:w-1/2 bg-gray-200 rounded-lg mx-auto shadow-lg p-4 animate__animated"
+  [class.animate__bounceIn]="!isLeaving" [class.animate__bounceOut]="isLeaving">
+  <h1 class="text-center text-[#14b588] text-2xl font-bold py-2">Pay Now :</h1>
+
+  <form [formGroup]="paymentForm" (ngSubmit)="submitForm()" novalidate>
+
+
+    <div class="mb-6">
+      <label for="uDetails" class="block mb-2 text-md font-medium text-[#14b588]">Details :</label>
+      <input formControlName="details" type="text" id="udetails" placeholder="Enter your address..."
+        class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:border-[#14b588] block w-full p-2.5" />
+      @if (paymentForm.get('details')?.invalid && paymentForm.get('details')?.touched) {
+      <p class="text-red-500 text-sm mt-1">Address is required.</p>
+      }
+    </div>
+
+    <div class="mb-6">
+      <label for="uPhone" class="block mb-2 text-md font-medium text-[#14b588]">Phone :</label>
+      <input formControlName="phone" type="tel" id="uPhone" placeholder="Enter your phone..."
+        class="bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:border-[#14b588] block w-full p-2.5" />
+      @if (paymentForm.get('phone')?.invalid && paymentForm.get('phone')?.touched) {
+      <p class="text-red-500 text-sm mt-1">
+        Please enter a valid Egyption phone number.
+      </p>
+      }
+    </div>
+
+    <div class="mb-6">
+      <label for="uCity" class="block mb-2 text-md font-medium text-[#14b588]">City :</label>
+      <select  id="uCity" formControlName="city"
+        class="bg-gray-50  border border-gray-300 text-gray-700 text-sm rounded-lg focus:border-[#14b588] block w-full p-2.5">
+        <option value="" disabled selected>Select your city</option>
+        @for (province of provinces; track $index) {
+        <option [value]="province">{{ province }}</option>
+        }
+      </select>
+      @if (paymentForm.get('city')?.invalid && paymentForm.get('city')?.touched) {
+      <p class="text-red-500 text-sm mt-1">City is required.</p>
+      }
+    </div>
+
+    <button (click)="submitForm()" [disabled]="paymentForm.invalid" [class.bg-green-600]="!isLoading && !isSuccess && !isError"
+      [class.hover:bg-green-800]="!isLoading && !isSuccess && !isError" [class.bg-yellow-500]="isLoading"
+      [class.bg-emerald-600]="isSuccess" [class.bg-red-600]="isError"
+      class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg text-lg font-semibold shadow transition duration-300">
+
+      @if (isLoading) {
+      <i class="fa-solid fa-spinner fa-spin"></i>
+      <span> Loading...</span>
+      } @else if (isSuccess) {
+      <i class="fa-solid fa-circle-check"></i>
+      <span> Done</span>
+      } @else if (isError) {
+      <i class="fa-solid fa-circle-xmark"></i>
+      <span> Failed</span>
+      } @else {
+      <span>🛒 Add to Cart</span>
+      }
+    </button>
+  </form>
+</section>

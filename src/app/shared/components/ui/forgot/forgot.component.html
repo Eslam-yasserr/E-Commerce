@@ -1,0 +1,98 @@
+<section class="w-full sm:w-3/4 md:w-2/3 lg:w-1/2 bg-gray-200 rounded-lg mx-auto shadow-lg p-4 animate__animated">
+
+
+  <h1 class="text-center text-[#14b588] text-2xl font-bold py-2">{{'forgot.resetPassword' | translate}}:</h1>
+
+  @if (step == 1) {
+  <form [formGroup]="forgotPassForm" (ngSubmit)="forgotPass()">
+    <div class="mb-6">
+      <label for="uEmail" class="block mb-2 text-md font-medium text-[#14b588] ">{{'forgot.email' | translate}} :</label>
+      <input formControlName="email" type="email" id="uEmail"
+        class="bg-gray-50 border mb-4.5 border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-gray-400 block w-full p-2.5 ">
+          @if (errMsg) {
+          <p class="my-1 animate__animated animate__shakeX p-4 mb-4 text-sm font-bold text-red-800 rounded-lg bg-red-100 border border-red-200"
+            role="alert">
+            <i class="fa-solid fa-circle-xmark me-2"></i>
+            {{ errMsg }}
+          </p>
+          }
+      <button type="submit"
+        class=" text-white font-medium rounded-lg text-md px-6  py-2.5 ms-auto cursor-pointer flex items-center gap-2 transition-all duration-300 bg-green-700 hover:bg-green-800 focus:none focus:outline-none focus:-none">
+        {{'forgot.sendCode' | translate}}
+      </button>
+    </div>
+  </form>
+  }
+
+
+  @if (step == 2) {
+  <form [formGroup]="verifyCodeForm" (ngSubmit)="verifyCode()">
+    <div class="mb-6">
+      <label for="uCode" class="block mb-2 text-md font-medium text-[#14b588] ">{{'forgot.resetCode' | translate}} :</label>
+      <input formControlName="resetCode" type="text" id="uCode"
+        class="bg-gray-50 border mb-3.5 border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-gray-400 block w-full p-2.5 ">
+
+  @if (errMsg) {
+  <p class="my-1 animate__animated animate__shakeX p-4 mb-4 text-sm font-bold text-red-800 rounded-lg bg-red-100 border border-red-200"
+    role="alert">
+    <i class="fa-solid fa-circle-xmark me-2"></i>
+    {{ errMsg }} {{'forgot.pleaseTryAgain' | translate}}
+  </p>
+  }
+
+      <button type="submit"
+        class=" text-white font-medium rounded-lg text-md px-6  py-2.5 ms-auto cursor-pointer flex items-center gap-2 transition-all duration-300 bg-green-700 hover:bg-green-800 focus:none focus:outline-none focus:-none">
+        {{'button.submit' | translate}}
+      </button>
+    </div>
+  </form>
+
+  }
+
+  @if (step == 3) {
+  <form [formGroup]="resetPassForm"  (ngSubmit)="resetPass()">
+    <div class="mb-6">
+      <label for="uConfirmEmail" class="block mb-2 text-md font-medium text-[#14b588] ">{{'forgot.email' | translate}}
+ :</label>
+      <input readonly formControlName="email" type="email" id="uConfirmEmail"
+        class="bg-gray-50 border mb-3.5 border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-gray-400 block w-full p-2.5 ">
+
+
+      <label for="uConfirmPass" class="block mb-2 text-md font-medium text-[#14b588] ">{{'forgot.newPassword' | translate}} :</label>
+      <input formControlName="newPassword" type="password" id="uConfirmPass"
+        class="bg-gray-50 border mb-3.5 border-gray-300 text-gray-900 text-sm rounded-lg focus:outline-gray-400 block w-full p-2.5 ">
+
+          @if (errMsg) {
+          <p class="my-1 animate__animated animate__shakeX p-4 mb-4 text-sm font-bold text-red-800 rounded-lg bg-red-100 border border-red-200"
+            role="alert">
+            <i class="fa-solid fa-circle-xmark me-2"></i>
+            {{ errMsg }}
+          </p>
+          }
+    </div>
+
+        <button type="submit" [disabled]="isLoading" [class.bg-green-600]="!isLoading && !isSuccess && !isError"
+          [class.hover:bg-green-800]="!isLoading && !isSuccess && !isError" [class.bg-yellow-500]="isLoading"
+          [class.bg-emerald-600]="isSuccess" [class.bg-red-600]="isError"
+          class="text-white focus:outline-none font-medium rounded-lg text-md px-6  py-2.5 ms-auto cursor-pointer flex items-center gap-2 transition-all duration-300">
+
+          @if (isLoading) {
+          <i class="fa-solid fa-spinner fa-spin"></i>
+          <span>{{'button.loading' | translate}}...</span>
+          } @else if (isSuccess) {
+          <i class="fa-solid fa-circle-check"></i>
+          <span>{{'button.done' | translate}}</span>
+          } @else if (isError) {
+          <i class="fa-solid fa-circle-xmark"></i>
+          <span>{{'button.failed' | translate}}</span>
+          } @else {
+          <span>{{'button.submit' | translate}}</span>
+          }
+
+        </button>
+
+  </form>
+
+  }
+
+</section>
