@@ -46,7 +46,7 @@ export class CartComponent implements OnInit {
         console.log(res);
         this.cartDetials = res.data;
         this.ngxSpinnerService.hide();
-        this.cartService.cartNumber.next(res.numOfCartItems)
+        this.cartService.cartNumber.set(res.numOfCartItems)
       },
       error: (err) => {
         console.error(err);
@@ -62,7 +62,7 @@ export class CartComponent implements OnInit {
         console.log(res);
         this.cartDetials = res.data;
             this.ngxSpinnerService.hide();
-        this.cartService.cartNumber.next(res.numOfCartItems);
+        this.cartService.cartNumber.set(res.numOfCartItems);
 
       },
       error: (err) => {
@@ -79,7 +79,7 @@ export class CartComponent implements OnInit {
         console.log(res);
         this.cartDetials = null;
         this.ngxSpinnerService.hide();
-        this.cartService.cartNumber.next(0);
+        this.cartService.cartNumber.set(0);
       },
       error: (err) => {
         console.error(err);

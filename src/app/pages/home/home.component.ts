@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit {
         console.log(res);
         setTimeout(() => (product.isSuccess = false), 2000);
         this.toastrService.success(res.message, 'FreshCart');
-        this.cartService.cartNumber.next(res.numOfCartItems);
+        this.cartService.cartNumber.set(res.numOfCartItems);
       },
       error: (err) => {
         product.isLoading = false;
